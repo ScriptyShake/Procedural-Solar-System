@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+#--------------------------------------------------------
+#           GENERATE M⊙primary FOLLOWING AN IMF
+#--------------------------------------------------------
+
 # -------------- Log Normal Piece
 lognormal_mass = np.random.lognormal(mean=0.2, sigma=0.69, size=10000)
 filtered_lognormal_mass = lognormal_mass[(lognormal_mass >= 0.08) & (lognormal_mass <= 1)]
@@ -24,6 +28,45 @@ m = sample_imf(10000)
 mass_list_lognormal = filtered_lognormal_mass.tolist()
 mass_list_powerlaw = m.tolist()
 primary_masses = mass_list_lognormal + mass_list_powerlaw  # full list of primary star masses
+
+#--------------------------------------------------------
+#               DEDUCE STELLAR MULTIPLICITY
+#--------------------------------------------------------
+
+# -------------- Multiplicity Properties table by Gaspard Duchêne and Adam Kraus (simplified)
+
+def find_mf(m):
+    if m < 0.1:
+        return 0.22
+    elif 0.1 <= m <= 0.5:
+        return 0.26
+    elif 0.5 < m <= 1.3:
+        return 0.44
+    elif 1.3 < m <= 5:
+        return 0.50
+    elif 5 < m <= 16:
+        return 0.60
+    elif m > 16:
+        return 0.80
+
+# -------------- Find if star-system is single or multiple based on M⊙primary
+for i in range(len(primary_masses)):
+    mass = primary_masses[i]
+    mf = find_mf(mass)
+    random_number = np.random.uniform(0, 1)
+    if random_number <= mf:
+        ...
+        # do logic for single
+    else:
+        ...
+        # do logic for multiple
+
+
+
+
+
+
+
 
 # -------------- Data Visualization & Validation
 plt.figure(figsize=(10, 6))
