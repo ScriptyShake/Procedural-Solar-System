@@ -96,7 +96,8 @@ for i in range(len(primary_masses)):
 # PROBLEM: The ratio isn't correct, we're supposed to have approximately 1/3 of stars be multiple
 print("Number of Single-Star Systems: ", num_singles)
 print("Number of Multiple-Star Systems: ", num_multiples)
-print("Ratio of Multiple-Star Systems to Single-Star Systems: ", num_multiples/num_singles)
+print("Percentage of Multiple-Star Systems: ", num_multiples/(num_singles+num_multiples))
+print("Percentage of Single-Star Systems: ", num_singles/(num_singles+num_multiples))
 
 
 
