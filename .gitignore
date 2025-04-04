@@ -218,3 +218,6 @@ Desktop.ini
 *.vscode/
 *.code-workspace
 *.iml
+Houdini/Caches/swirly_particles_cache.hjson
+/Houdini/Project Files/backup
+/Houdini/HDAs/backup
